@@ -1,14 +1,14 @@
 import Foundation
 
 /// USB HID keyboard usages (page 0x07) offered for "Keyboard key" assignments.
-enum KeyCodes {
-    struct Key: Identifiable, Hashable {
-        let code: UInt8
-        let name: String
-        var id: UInt8 { code }
+public enum KeyCodes {
+    public struct Key: Identifiable, Hashable {
+        public let code: UInt8
+        public let name: String
+        public var id: UInt8 { code }
     }
 
-    static let all: [Key] = {
+    public static let all: [Key] = {
         var keys: [Key] = []
         for (i, c) in "ABCDEFGHIJKLMNOPQRSTUVWXYZ".enumerated() { keys.append(Key(code: UInt8(0x04 + i), name: String(c))) }
         for (i, c) in "1234567890".enumerated() { keys.append(Key(code: UInt8(0x1E + i), name: String(c))) }
@@ -31,7 +31,7 @@ enum KeyCodes {
         return keys
     }()
 
-    static func name(for code: UInt8) -> String {
+    public static func name(for code: UInt8) -> String {
         all.first { $0.code == code }?.name ?? String(format: "Key 0x%02X", code)
     }
 }

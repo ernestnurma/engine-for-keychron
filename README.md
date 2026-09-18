@@ -71,25 +71,29 @@ cd engine-for-keychron
 ./Scripts/build.sh      # -> dist/Engine for Keychron.app and dist/EngineForKeychron-1.0.0.dmg (arm64, ad-hoc signed)
 ```
 
-For development, `swift build` compiles the code; run the app through `build.sh` so it has its Info.plist (needed for the Bluetooth permission prompt).
-
-Self-test against a connected mouse (no window):
+For development:
 
 ```sh
-"dist/Engine for Keychron.app/Contents/MacOS/EngineForKeychron" --selftest           # read-only dump of all settings
-"dist/Engine for Keychron.app/Contents/MacOS/EngineForKeychron" --selftest --write   # change a few settings, verify, restore
+swift build                                        # build everything
+swift test                                         # unit tests (no hardware needed)
+"$(swift build --show-bin-path)/engine-cli" info         # read everything from a connected mouse
+"$(swift build --show-bin-path)/engine-cli" write-test   # change a few settings, verify, restore
 ```
+
+Run the app through `build.sh` so it has its Info.plist (needed for the Bluetooth permission prompt).
 
 ### Project layout
 
-| File | Purpose |
+| Path | Purpose |
 |---|---|
-| `Sources/EngineForKeychron/HIDTransport.swift` | IOKit HID access, receiver handshake, request/response |
-| `Sources/EngineForKeychron/Protocol.swift` | Model table, command builders and parsers, button-function encoding |
-| `Sources/EngineForKeychron/MouseController.swift` | Device discovery, loading and applying settings |
-| `Sources/EngineForKeychron/BluetoothInfo.swift` | CoreBluetooth battery/firmware reader for Bluetooth mode |
-| `Sources/EngineForKeychron/Views.swift`, `Main.swift` | SwiftUI interface and the `--selftest` entry point |
-| `Scripts/build.sh`, `Scripts/make_icon.swift` | App bundle, icon and DMG packaging |
+| `Sources/KeychronKit/` | Library: model catalogue, domain types, HID transport, device discovery, `MouseDriver` + `ClassicDriver`, Bluetooth reader |
+| `Sources/EngineForKeychron/` | SwiftUI app: `MouseStore` (state) and one view per screen |
+| `Sources/engine-cli/` | Command-line diagnostics against a real mouse |
+| `Tests/KeychronKitTests/` | Unit tests using packets captured from a real M3 |
+| `Scripts/` | App bundle, icon and DMG packaging |
+
+See [ARCHITECTURE.md](ARCHITECTURE.md) for how the layers fit together and how to add a model, a setting or a new
+protocol family.
 
 ## Protocol notes
 

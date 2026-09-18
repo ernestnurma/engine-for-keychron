@@ -10,7 +10,7 @@ DIST="$ROOT/dist"
 APP="$DIST/$APP_NAME.app"
 
 cd "$ROOT"
-swift build -c release --arch arm64
+swift build -c release --arch arm64 --product EngineForKeychron
 BIN="$(swift build -c release --arch arm64 --show-bin-path)/EngineForKeychron"
 
 rm -rf "$DIST"
