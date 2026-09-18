@@ -1,0 +1,19 @@
+# Swift Package Manager / build output
+.build/
+.swiftpm/
+dist/
+*.dmg
+
+# Xcode
+xcuserdata/
+DerivedData/
+*.xcodeproj/
+*.xcworkspace/
+
+# macOS
+.DS_Store
+._*
+
+# Vendor binaries — never commit the original Keychron Engine installer or extracted files
+*.pkg
+pkg_extract/
