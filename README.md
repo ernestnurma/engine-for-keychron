@@ -1,3 +1,5 @@
+<p align="center"><img src="Assets/AppIcon.png" width="128" alt="Engine for Keychron icon"></p>
+
 # Engine for Keychron
 
 A native **Apple Silicon** macOS app for configuring Keychron M-series mice. It replaces the Intel-only
@@ -127,6 +129,10 @@ app never writes to.
 ## Not implemented
 
 Macros, rapid fire, switching between onboard profiles, and the 4K (Nordic-based) models.
+
+## License
+
+[MIT](LICENSE)
 
 ## Trademarks
 
