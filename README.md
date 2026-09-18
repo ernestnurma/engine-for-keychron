@@ -68,7 +68,7 @@ Requires Xcode 15 or later (or the Swift 5.9+ command-line toolchain).
 ```sh
 git clone <this repo>
 cd engine-for-keychron
-./Scripts/build.sh      # -> dist/Engine for Keychron.app and dist/EngineForKeychron-1.0.0.dmg (arm64, ad-hoc signed)
+./Scripts/build.sh      # -> dist/Engine for Keychron.app and dist/EngineForKeychron-1.0.1.dmg (arm64, ad-hoc signed)
 ```
 
 For development:

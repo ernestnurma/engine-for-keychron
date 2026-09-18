@@ -4,7 +4,7 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 APP_NAME="Engine for Keychron"
-VERSION="1.0.0"
+VERSION="1.0.1"
 BUILD="$ROOT/.build"
 DIST="$ROOT/dist"
 APP="$DIST/$APP_NAME.app"
